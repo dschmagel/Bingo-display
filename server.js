@@ -15,6 +15,22 @@ const bingoPatterns = [
   "X",
   "Blackout"
 ];
+const bingoColumns = [
+  { letter: "B", start: 1, end: 15 },
+  { letter: "I", start: 16, end: 30 },
+  { letter: "N", start: 31, end: 45 },
+  { letter: "G", start: 46, end: 60 },
+  { letter: "O", start: 61, end: 75 }
+];
+const bingoNumbers = bingoColumns.flatMap((column) => {
+  const numbers = [];
+
+  for (let value = column.start; value <= column.end; value += 1) {
+    numbers.push(`${column.letter}${value}`);
+  }
+
+  return numbers;
+});
 
 // Serve the plain HTML, CSS, and browser JavaScript files from /public.
 app.use(express.static(path.join(__dirname, "public")));
@@ -61,7 +77,7 @@ io.on("connection", (socket) => {
   socket.emit("state:update", getPublicState());
 
   socket.on("number:call", (number) => {
-    if (gameState.calledNumbers.includes(number)) {
+    if (!bingoNumbers.includes(number) || gameState.calledNumbers.includes(number)) {
       return;
     }
 
@@ -70,8 +86,23 @@ io.on("connection", (socket) => {
     sendStateToEveryone();
   });
 
+  socket.on("number:call-random", () => {
+    const remainingNumbers = bingoNumbers.filter((number) => {
+      return !gameState.calledNumbers.includes(number);
+    });
+
+    if (remainingNumbers.length === 0) {
+      return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * remainingNumbers.length);
+    gameState.calledNumbers.push(remainingNumbers[randomIndex]);
+    gameState.showBingo = false;
+    sendStateToEveryone();
+  });
+
   socket.on("number:uncall", (number) => {
-    if (!gameState.calledNumbers.includes(number)) {
+    if (!bingoNumbers.includes(number) || !gameState.calledNumbers.includes(number)) {
       return;
     }
 

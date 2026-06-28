@@ -11,8 +11,10 @@ const resumeButton = document.getElementById("resumeButton");
 const resetButton = document.getElementById("resetButton");
 const darkModeToggle = document.getElementById("darkModeToggle");
 const correctionModeButton = document.getElementById("correctionModeButton");
+const randomCallButton = document.getElementById("randomCallButton");
 
 const darkModeStorageKey = "bingoAdminDarkMode";
+const totalBingoNumbers = 75;
 let correctionMode = false;
 let latestCalledNumbers = [];
 
@@ -110,6 +112,7 @@ function updateAdmin(state) {
   updateNumberButtons(state.calledNumbers);
 
   undoButton.disabled = state.calledNumbers.length === 0;
+  randomCallButton.disabled = state.calledNumbers.length >= totalBingoNumbers;
   resumeButton.disabled = !state.showBingo;
 }
 
@@ -139,6 +142,10 @@ darkModeToggle.addEventListener("change", () => {
 
 correctionModeButton.addEventListener("click", () => {
   setCorrectionMode(!correctionMode);
+});
+
+randomCallButton.addEventListener("click", () => {
+  socket.emit("number:call-random");
 });
 
 patternSelect.addEventListener("change", () => {
