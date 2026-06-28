@@ -128,13 +128,13 @@ button:disabled {
 }
 
 .current-number-badge.letter-n {
-  --number-color: 155, 109, 255;
+  --number-color: 255, 255, 255;
   background:
-    radial-gradient(circle, rgba(255, 255, 255, 0.13) 0 42%, transparent 43%),
-    radial-gradient(circle, rgba(155, 109, 255, 0.34), rgba(155, 109, 255, 0.12) 66%, transparent 72%);
+    radial-gradient(circle, rgba(255, 255, 255, 0.2) 0 42%, transparent 43%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.44), rgba(255, 255, 255, 0.14) 66%, transparent 72%);
   box-shadow:
-    0 0 34px rgba(155, 109, 255, 0.42),
-    inset 0 0 30px rgba(255, 255, 255, 0.08);
+    0 0 40px rgba(255, 255, 255, 0.4),
+    inset 0 0 32px rgba(255, 255, 255, 0.12);
 }
 
 .current-number-badge.letter-g {
@@ -245,15 +245,16 @@ button:disabled {
 }
 
 .recent-call-n {
-  --recent-color: 155, 109, 255;
-  border-color: #cdbaff;
+  --recent-color: 255, 255, 255;
+  border-color: rgba(255, 255, 255, 0.95);
   background:
-    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.3), transparent 24%),
-    linear-gradient(145deg, #b999ff, #7f4ee8 58%, #4f2f95);
+    radial-gradient(circle at 35% 28%, #ffffff, rgba(255, 255, 255, 0.7) 25%, transparent 26%),
+    linear-gradient(145deg, #ffffff, #dfe8f2 62%, #8797a8);
+  color: #101820;
   box-shadow:
-    0 0 0 3px rgba(155, 109, 255, 0.22),
-    0 0 30px rgba(155, 109, 255, 0.78),
-    inset 0 0 18px rgba(255, 255, 255, 0.1);
+    0 0 0 3px rgba(255, 255, 255, 0.18),
+    0 0 32px rgba(255, 255, 255, 0.62),
+    inset 0 0 16px rgba(255, 255, 255, 0.48);
 }
 
 .recent-call-g {
