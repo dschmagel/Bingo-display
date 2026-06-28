@@ -129,6 +129,12 @@ button:disabled {
 
 .current-number-badge.letter-n {
   --number-color: 155, 109, 255;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.13) 0 42%, transparent 43%),
+    radial-gradient(circle, rgba(155, 109, 255, 0.5), rgba(155, 109, 255, 0.18) 68%, transparent 72%);
+  box-shadow:
+    0 0 56px rgba(155, 109, 255, 0.64),
+    inset 0 0 40px rgba(255, 255, 255, 0.1);
 }
 
 .current-number-badge.letter-g {
@@ -240,6 +246,14 @@ button:disabled {
 
 .recent-call-n {
   --recent-color: 155, 109, 255;
+  border-color: rgba(185, 153, 255, 0.95);
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.28), transparent 24%),
+    radial-gradient(circle, rgba(155, 109, 255, 0.58), rgba(155, 109, 255, 0.24) 58%, rgba(31, 22, 56, 0.9));
+  box-shadow:
+    0 0 0 3px rgba(155, 109, 255, 0.16),
+    0 0 28px rgba(155, 109, 255, 0.72),
+    inset 0 0 18px rgba(255, 255, 255, 0.1);
 }
 
 .recent-call-g {
