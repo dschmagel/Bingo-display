@@ -128,15 +128,15 @@ button:disabled {
 }
 
 .current-number-badge.letter-n {
-  --number-color: 49, 184, 120;
+  --number-color: 245, 248, 252;
 }
 
 .current-number-badge.letter-g {
-  --number-color: 240, 180, 41;
+  --number-color: 49, 184, 120;
 }
 
 .current-number-badge.letter-o {
-  --number-color: 155, 109, 255;
+  --number-color: 255, 216, 77;
 }
 
 .current-letter {
@@ -153,6 +153,11 @@ button:disabled {
   font-weight: 900;
   box-shadow: 0 0 28px rgba(var(--number-color), 0.7);
   transform: translateY(-35%);
+}
+
+.letter-n .current-letter,
+.letter-o .current-letter {
+  color: #101820;
 }
 
 .current-number {
@@ -190,27 +195,57 @@ button:disabled {
   font-variant-numeric: tabular-nums;
 }
 
-.display-bottom-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(0.8rem, 2vw, 2rem);
-  width: 100%;
+.recent-calls {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.45rem, 1vw, 0.85rem);
+  min-height: clamp(3.6rem, 6vw, 5.4rem);
   margin: 2rem auto 0;
 }
 
-.display-stat {
-  margin: 0;
-  font-size: clamp(1.35rem, 2.8vw, 3.3rem);
-  color: #d7e0ea;
+.recent-call,
+.recent-call-empty {
+  display: grid;
+  place-items: center;
+  min-width: clamp(3.2rem, 5.2vw, 5rem);
+  min-height: clamp(3.2rem, 5.2vw, 5rem);
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  font-size: clamp(0.95rem, 1.65vw, 1.55rem);
+  font-weight: 900;
   white-space: nowrap;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.14);
 }
 
-.previous-line {
-  text-align: left;
+.recent-call-empty {
+  min-width: clamp(8rem, 14vw, 12rem);
+  color: #d7e0ea;
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.remaining-line {
-  text-align: right;
+.recent-call-b {
+  background: #3287ff;
+  color: white;
+}
+
+.recent-call-i {
+  background: #e43f5a;
+  color: white;
+}
+
+.recent-call-n {
+  background: #f5f8fc;
+  color: #101820;
+}
+
+.recent-call-g {
+  background: #31b878;
+  color: white;
+}
+
+.recent-call-o {
+  background: #ffd84d;
+  color: #101820;
 }
 
 .pattern-board-panel {

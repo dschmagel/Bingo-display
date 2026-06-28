@@ -6,14 +6,12 @@ const fireworks = document.getElementById("fireworks");
 const currentNumberBadge = document.getElementById("currentNumberBadge");
 const currentLetter = document.getElementById("currentLetter");
 const currentNumber = document.getElementById("currentNumber");
-const previousNumber = document.getElementById("previousNumber");
-const remainingCount = document.getElementById("remainingCount");
+const recentCalls = document.getElementById("recentCalls");
 const displayPattern = document.getElementById("displayPattern");
 const patternBoard = document.getElementById("patternBoard");
 
 const fireworkColors = ["#ffd84d", "#ff5d73", "#54d6ff", "#7ef0a8", "#c78cff"];
 const bingoLetters = ["B", "I", "N", "G", "O"];
-const totalBingoNumbers = 75;
 let fireworksStarted = false;
 let fireworksTimer = null;
 let currentPattern = "Regular Bingo";
@@ -210,6 +208,27 @@ function updatePatternBoard(pattern) {
   });
 }
 
+function updateRecentCalls(calledNumbers) {
+  const newestCalls = calledNumbers.slice(-10).reverse();
+  recentCalls.innerHTML = "";
+
+  if (newestCalls.length === 0) {
+    const emptyItem = document.createElement("span");
+    emptyItem.className = "recent-call-empty";
+    emptyItem.textContent = "No calls yet";
+    recentCalls.appendChild(emptyItem);
+    return;
+  }
+
+  for (const number of newestCalls) {
+    const letter = number.charAt(0).toLowerCase();
+    const item = document.createElement("span");
+    item.className = `recent-call recent-call-${letter}`;
+    item.textContent = formatDisplayNumber(number);
+    recentCalls.appendChild(item);
+  }
+}
+
 function updateDisplay(state) {
   if (state.showBingo) {
     numberView.classList.add("hidden");
@@ -233,8 +252,7 @@ function updateDisplay(state) {
   currentPattern = nextPattern;
   displayPattern.textContent = currentPattern;
   updatePatternBoard(currentPattern);
-  previousNumber.textContent = formatDisplayNumber(state.previousNumber) || "None";
-  remainingCount.textContent = totalBingoNumbers - state.calledNumbers.length;
+  updateRecentCalls(state.calledNumbers);
 }
 
 socket.on("state:update", updateDisplay);
