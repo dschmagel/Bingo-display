@@ -74,7 +74,18 @@ button:disabled {
 }
 
 .number-view {
-  width: min(100%, 88rem);
+  width: min(100%, 96rem);
+}
+
+.display-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(15rem, 0.65fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.number-column {
+  min-width: 0;
 }
 
 .current-number-badge {
@@ -195,6 +206,66 @@ button:disabled {
 
 .remaining-line {
   text-align: right;
+}
+
+.pattern-board-panel {
+  align-self: center;
+  border: 2px solid rgba(183, 197, 213, 0.36);
+  border-radius: 18px;
+  padding: clamp(1rem, 2vw, 1.6rem);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow:
+    0 0 34px rgba(84, 214, 255, 0.16),
+    inset 0 0 28px rgba(255, 255, 255, 0.06);
+}
+
+.pattern-board-title {
+  margin-bottom: 0.8rem;
+  color: #d7e0ea;
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  font-weight: 800;
+}
+
+.pattern-board-letters,
+.pattern-board {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(0.3rem, 0.8vw, 0.6rem);
+}
+
+.pattern-board-letters {
+  margin-bottom: clamp(0.3rem, 0.8vw, 0.6rem);
+}
+
+.pattern-board-letters span {
+  color: #b7c5d5;
+  font-size: clamp(1rem, 1.8vw, 1.6rem);
+  font-weight: 900;
+}
+
+.pattern-board-cell {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 2px solid rgba(183, 197, 213, 0.32);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(0.52rem, 0.9vw, 0.8rem);
+  font-weight: 900;
+}
+
+.pattern-board-cell.active {
+  border-color: #ffd84d;
+  background: #ffd84d;
+  color: #101820;
+  box-shadow: 0 0 18px rgba(255, 216, 77, 0.78);
+  transform: scale(1.04);
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .bingo-view {
@@ -676,6 +747,15 @@ button:disabled {
 }
 
 @media (max-width: 900px) {
+  .display-content {
+    grid-template-columns: 1fr;
+  }
+
+  .pattern-board-panel {
+    justify-self: center;
+    width: min(100%, 24rem);
+  }
+
   .admin-header {
     display: block;
   }
