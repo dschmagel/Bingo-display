@@ -189,15 +189,16 @@ button:disabled {
 .display-bottom-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(1rem, 4vw, 4rem);
+  gap: clamp(0.8rem, 2vw, 2rem);
   width: 100%;
   margin: 2rem auto 0;
 }
 
 .display-stat {
   margin: 0;
-  font-size: clamp(1.8rem, 4.2vw, 5rem);
+  font-size: clamp(1.35rem, 2.8vw, 3.3rem);
   color: #d7e0ea;
+  white-space: nowrap;
 }
 
 .previous-line {
