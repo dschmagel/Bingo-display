@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bingo Admin</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body class="admin-page">
+    <header class="admin-header">
+      <div>
+        <h1>Bingo Admin</h1>
+        <p>Current: <strong id="adminCurrentNumber">None</strong></p>
+      </div>
+      <div class="admin-actions" aria-label="Game controls">
+        <label class="theme-toggle">
+          <input id="darkModeToggle" type="checkbox">
+          <span>Dark Mode</span>
+        </label>
+        <button id="correctionModeButton" class="correction-button" type="button" aria-pressed="false">Correction Mode</button>
+        <button id="undoButton" class="secondary-button" type="button">Undo Last Call</button>
+        <button id="bingoButton" class="primary-button" type="button">Show BINGO</button>
+        <button id="resumeButton" class="secondary-button" type="button">Resume Game</button>
+        <button id="resetButton" class="danger-button" type="button">Reset Game</button>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <section class="pattern-panel" aria-labelledby="patternTitle">
+        <label for="patternSelect" id="patternTitle">Winning Pattern</label>
+        <select id="patternSelect">
+          <option value="Regular Bingo">Regular Bingo</option>
+          <option value="Double Bingo">Double Bingo</option>
+          <option value="Corners">Corners</option>
+          <option value="X">X</option>
+          <option value="Blackout">Blackout</option>
+        </select>
+      </section>
+
+      <section class="call-history" aria-labelledby="callHistoryTitle">
+        <div class="call-history-header">
+          <h2 id="callHistoryTitle">Last 10 Calls</h2>
+          <p><span id="calledCount">0</span> called</p>
+        </div>
+        <ol id="callHistoryList" class="call-history-list">
+          <li class="empty-history">No numbers called yet</li>
+        </ol>
+      </section>
+
+      <section id="numberBoard" class="number-board" aria-label="Bingo number buttons"></section>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/admin.js"></script>
+  </body>
+</html>

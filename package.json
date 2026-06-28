@@ -1,0 +1,14 @@
+{
+  "name": "bingo-display",
+  "version": "1.0.0",
+  "description": "A local web app for running bingo games on an admin page and a projected display.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  }
+}

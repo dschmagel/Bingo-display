@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+
+# Local scratch/output folders from the Codex workspace.
+work/
+outputs/
+
+# Environment files should stay private.
+.env
+.env.*

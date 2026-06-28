@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bingo Display</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body class="display-page">
+    <main class="display-screen" aria-live="polite">
+      <section id="numberView" class="number-view">
+        <p class="display-pattern">Pattern: <span id="displayPattern" class="display-pattern-value">Regular Bingo</span></p>
+        <div id="currentNumberBadge" class="current-number-badge">
+          <span id="currentLetter" class="current-letter hidden"></span>
+          <h1 id="currentNumber" class="current-number">Ready</h1>
+        </div>
+        <div class="display-bottom-row">
+          <p class="display-stat previous-line">Previous: <span id="previousNumber">None</span></p>
+          <p class="display-stat remaining-line">Remaining: <span id="remainingCount">75</span></p>
+        </div>
+      </section>
+
+      <section id="bingoView" class="bingo-view hidden">
+        <div id="fireworks" class="fireworks" aria-hidden="true">
+          <span class="loop-firework"></span>
+          <span class="loop-firework"></span>
+          <span class="loop-firework"></span>
+          <span class="loop-firework"></span>
+          <span class="loop-firework"></span>
+          <span class="loop-firework"></span>
+        </div>
+        <h1>BINGO!</h1>
+      </section>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/display.js"></script>
+  </body>
+</html>
