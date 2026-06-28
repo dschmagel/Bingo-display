@@ -56,21 +56,25 @@ button:disabled {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: min(100%, 42rem);
+  width: min(100%, 52rem);
   min-height: clamp(3.4rem, 6.6vw, 6.3rem);
   margin: 0 0 2.8rem;
   border: 2px solid rgba(183, 197, 213, 0.45);
   border-radius: 999px;
-  padding: 0 clamp(1.6rem, 3.8vw, 3.4rem);
+  padding: 0 clamp(1.2rem, 2.5vw, 2.4rem);
   color: #e8f0fa;
   background: rgba(255, 255, 255, 0.08);
-  font-size: clamp(1.7rem, 3.8vw, 4.2rem);
+  font-size: clamp(1.45rem, 2.8vw, 3.1rem);
   font-weight: 800;
+  overflow: hidden;
   white-space: nowrap;
 }
 
 .display-pattern-value {
   margin-left: 0.35em;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .number-view {
