@@ -206,16 +206,23 @@ button:disabled {
 
 .recent-call,
 .recent-call-empty {
+  --recent-color: 183, 197, 213;
   display: grid;
   place-items: center;
   min-width: clamp(3.2rem, 5.2vw, 5rem);
   min-height: clamp(3.2rem, 5.2vw, 5rem);
   border-radius: 999px;
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(var(--recent-color), 0.82);
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.24), transparent 24%),
+    radial-gradient(circle, rgba(var(--recent-color), 0.38), rgba(var(--recent-color), 0.13) 58%, rgba(16, 24, 32, 0.82));
+  color: #f8fbff;
   font-size: clamp(0.95rem, 1.65vw, 1.55rem);
   font-weight: 900;
   white-space: nowrap;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 0 18px rgba(var(--recent-color), 0.42),
+    inset 0 0 18px rgba(255, 255, 255, 0.08);
 }
 
 .recent-call-empty {
@@ -225,28 +232,25 @@ button:disabled {
 }
 
 .recent-call-b {
-  background: #3287ff;
-  color: white;
+  --recent-color: 50, 135, 255;
 }
 
 .recent-call-i {
-  background: #e43f5a;
-  color: white;
+  --recent-color: 228, 63, 90;
 }
 
 .recent-call-n {
-  background: #f5f8fc;
-  color: #101820;
-}
-
-.recent-call-g {
-  background: #31b878;
+  --recent-color: 245, 248, 252;
   color: white;
 }
 
+.recent-call-g {
+  --recent-color: 49, 184, 120;
+}
+
 .recent-call-o {
-  background: #ffd84d;
-  color: #101820;
+  --recent-color: 255, 216, 77;
+  color: white;
 }
 
 .pattern-board-panel {
