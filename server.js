@@ -33,7 +33,14 @@ const bingoNumbers = bingoColumns.flatMap((column) => {
 });
 
 // Serve the plain HTML, CSS, and browser JavaScript files from /public.
-app.use(express.static(path.join(__dirname, "public")));
+// Disable browser caching so display/admin pages pick up style changes quickly.
+app.use(express.static(path.join(__dirname, "public"), {
+  etag: false,
+  lastModified: false,
+  setHeaders: (res) => {
+    res.setHeader("Cache-Control", "no-store");
+  }
+}));
 
 // Keep route names friendly and explicit for the two app pages.
 app.get("/", (req, res) => {
