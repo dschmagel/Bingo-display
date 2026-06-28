@@ -249,14 +249,14 @@ button:disabled {
   --recent-color: 255, 255, 255;
   border-color: rgba(255, 255, 255, 0.95);
   background:
-    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.48), transparent 24%),
-    radial-gradient(circle, rgba(255, 255, 255, 0.56), rgba(255, 255, 255, 0.22) 58%, rgba(16, 24, 32, 0.78));
-  color: white;
+    radial-gradient(circle at 35% 28%, #ffffff, rgba(255, 255, 255, 0.72) 26%, transparent 27%),
+    radial-gradient(circle, #f8fbff, #dfe8f2 68%, #aebdcc);
+  color: #101820;
   box-shadow:
-    0 0 0 4px rgba(255, 255, 255, 0.16),
-    0 0 34px rgba(255, 255, 255, 0.74),
-    0 0 62px rgba(255, 255, 255, 0.34),
-    inset 0 0 18px rgba(255, 255, 255, 0.16);
+    0 0 0 4px rgba(255, 255, 255, 0.2),
+    0 0 36px rgba(255, 255, 255, 0.82),
+    0 0 68px rgba(255, 255, 255, 0.38),
+    inset 0 0 14px rgba(255, 255, 255, 0.72);
 }
 
 .recent-call-g {
