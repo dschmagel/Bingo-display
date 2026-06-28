@@ -130,11 +130,11 @@ button:disabled {
 .current-number-badge.letter-n {
   --number-color: 255, 255, 255;
   background:
-    radial-gradient(circle, rgba(255, 255, 255, 0.24) 0 42%, transparent 43%),
-    radial-gradient(circle, rgba(255, 255, 255, 0.52), transparent 70%);
+    radial-gradient(circle, rgba(255, 255, 255, 0.18) 0 42%, transparent 43%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.42), transparent 68%);
   box-shadow:
-    0 0 64px rgba(255, 255, 255, 0.58),
-    inset 0 0 44px rgba(255, 255, 255, 0.16);
+    0 0 46px rgba(255, 255, 255, 0.44),
+    inset 0 0 34px rgba(255, 255, 255, 0.12);
 }
 
 .current-number-badge.letter-g {
@@ -253,7 +253,9 @@ button:disabled {
     radial-gradient(circle, rgba(255, 255, 255, 0.56), rgba(255, 255, 255, 0.22) 58%, rgba(16, 24, 32, 0.78));
   color: white;
   box-shadow:
-    0 0 26px rgba(255, 255, 255, 0.56),
+    0 0 0 4px rgba(255, 255, 255, 0.16),
+    0 0 34px rgba(255, 255, 255, 0.74),
+    0 0 62px rgba(255, 255, 255, 0.34),
     inset 0 0 18px rgba(255, 255, 255, 0.16);
 }
 
