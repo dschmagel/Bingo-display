@@ -15,6 +15,12 @@ const bingoPatterns = [
   "X",
   "Blackout"
 ];
+const displayModes = [
+  "main",
+  "number",
+  "pattern",
+  "recent"
+];
 const bingoColumns = [
   { letter: "B", start: 1, end: 15 },
   { letter: "I", start: 16, end: 30 },
@@ -59,7 +65,8 @@ app.get("/admin", (req, res) => {
 const gameState = {
   calledNumbers: [],
   showBingo: false,
-  pattern: "Regular Bingo"
+  pattern: "Regular Bingo",
+  displayMode: "main"
 };
 
 function getPublicState() {
@@ -71,7 +78,8 @@ function getPublicState() {
     currentNumber,
     previousNumber,
     showBingo: gameState.showBingo,
-    pattern: gameState.pattern
+    pattern: gameState.pattern,
+    displayMode: gameState.displayMode
   };
 }
 
@@ -132,6 +140,15 @@ io.on("connection", (socket) => {
     }
 
     gameState.pattern = pattern;
+    sendStateToEveryone();
+  });
+
+  socket.on("display:set-mode", (displayMode) => {
+    if (!displayModes.includes(displayMode)) {
+      return;
+    }
+
+    gameState.displayMode = displayMode;
     sendStateToEveryone();
   });
 

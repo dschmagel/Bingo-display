@@ -47,7 +47,7 @@ button:disabled {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  padding: 5vw;
+  padding: clamp(1.25rem, 3vh, 3rem) clamp(1.5rem, 5vw, 4rem);
   text-align: center;
   overflow: hidden;
 }
@@ -92,13 +92,54 @@ button:disabled {
   min-width: 0;
 }
 
+.display-mode-number .display-pattern,
+.display-mode-number .pattern-board-panel,
+.display-mode-number .recent-calls,
+.display-mode-pattern .display-pattern,
+.display-mode-pattern .number-column,
+.display-mode-pattern .recent-calls,
+.display-mode-recent .display-pattern,
+.display-mode-recent .display-content {
+  display: none;
+}
+
+.display-mode-number .display-content,
+.display-mode-pattern .display-content {
+  display: block;
+}
+
+.display-mode-number .number-column {
+  display: grid;
+  min-height: 78vh;
+  place-items: center;
+}
+
+.display-mode-number .current-number-badge {
+  min-width: min(64vw, 72vh, 52rem);
+  min-height: min(64vw, 72vh, 52rem);
+}
+
+.display-mode-number .current-number {
+  font-size: clamp(9rem, 31vw, 29rem);
+}
+
+.display-mode-number .current-number.ready-number {
+  font-size: clamp(6rem, 17vw, 15rem);
+}
+
+.display-mode-number .current-letter {
+  min-width: clamp(4rem, 8vw, 7rem);
+  min-height: clamp(4rem, 8vw, 7rem);
+  font-size: clamp(2.3rem, 5vw, 4.6rem);
+}
+
 .current-number-badge {
   --number-color: 77, 111, 145;
   position: relative;
   display: inline-grid;
   place-items: center;
-  min-width: clamp(17rem, 39vw, 37rem);
-  min-height: clamp(16.5rem, 38vw, 36rem);
+  min-width: clamp(16rem, 35vw, 34rem);
+  min-height: clamp(15.5rem, 34vw, 32rem);
   padding: clamp(3.8rem, 6vw, 6rem) clamp(2.4rem, 4.5vw, 4.6rem) clamp(2.4rem, 4.5vw, 4.6rem);
   border: clamp(0.55rem, 1.2vw, 1.1rem) solid rgba(183, 197, 213, 0.72);
   border-radius: 999px;
@@ -168,7 +209,7 @@ button:disabled {
   justify-content: center;
   column-gap: clamp(0.05rem, 0.35vw, 0.35rem);
   margin: 0;
-  font-size: clamp(7rem, 24vw, 22rem);
+  font-size: clamp(7rem, 20vw, 20rem);
   line-height: 0.9;
   color: #f8fbff;
   text-shadow: 0 6px 28px rgba(0, 0, 0, 0.38);
@@ -264,6 +305,35 @@ button:disabled {
     inset 0 0 28px rgba(255, 255, 255, 0.06);
 }
 
+.display-mode-pattern .pattern-board-panel {
+  width: min(86vw, 66vh);
+  margin: 0 auto;
+  padding: clamp(1.1rem, 2.6vw, 2.4rem);
+}
+
+.display-mode-pattern .pattern-board-title {
+  margin-bottom: clamp(0.9rem, 1.8vw, 1.6rem);
+  font-size: clamp(2rem, 4vw, 4.4rem);
+}
+
+.display-mode-pattern .pattern-board-letters,
+.display-mode-pattern .pattern-board {
+  gap: clamp(0.45rem, 1.2vw, 1rem);
+}
+
+.display-mode-pattern .pattern-board-letters {
+  margin-bottom: clamp(0.45rem, 1.2vw, 1rem);
+}
+
+.display-mode-pattern .pattern-board-letters span {
+  font-size: clamp(1.6rem, 3.2vw, 3.4rem);
+}
+
+.display-mode-pattern .pattern-board-cell {
+  border-radius: 12px;
+  font-size: clamp(0.75rem, 1.6vw, 1.45rem);
+}
+
 .pattern-board-title {
   margin-bottom: 0.8rem;
   color: #d7e0ea;
@@ -311,6 +381,32 @@ button:disabled {
     border-color 180ms ease,
     box-shadow 180ms ease,
     transform 180ms ease;
+}
+
+.display-mode-recent .number-view {
+  display: grid;
+  min-height: 80vh;
+  place-items: center;
+}
+
+.display-mode-recent .recent-calls {
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(0.8rem, 2vw, 1.6rem);
+  margin: 0;
+}
+
+.display-mode-recent .recent-call,
+.display-mode-recent .recent-call-empty {
+  min-width: clamp(5.6rem, 12vw, 11rem);
+  min-height: clamp(5.6rem, 12vw, 11rem);
+  border-width: clamp(0.18rem, 0.45vw, 0.4rem);
+  font-size: clamp(1.7rem, 4vw, 3.8rem);
+}
+
+.display-mode-recent .recent-call-empty {
+  min-width: min(88vw, 28rem);
+  min-height: clamp(6rem, 13vw, 10rem);
 }
 
 .bingo-view {

@@ -1,5 +1,6 @@
 const socket = io();
 
+const displayScreen = document.querySelector(".display-screen");
 const numberView = document.getElementById("numberView");
 const bingoView = document.getElementById("bingoView");
 const fireworks = document.getElementById("fireworks");
@@ -229,6 +230,18 @@ function updateRecentCalls(calledNumbers) {
   }
 }
 
+function updateDisplayMode(displayMode) {
+  const mode = displayMode || "main";
+
+  displayScreen.classList.remove(
+    "display-mode-main",
+    "display-mode-number",
+    "display-mode-pattern",
+    "display-mode-recent"
+  );
+  displayScreen.classList.add(`display-mode-${mode}`);
+}
+
 function updateDisplay(state) {
   if (state.showBingo) {
     numberView.classList.add("hidden");
@@ -240,6 +253,7 @@ function updateDisplay(state) {
   stopFireworks();
   bingoView.classList.add("hidden");
   numberView.classList.remove("hidden");
+  updateDisplayMode(state.displayMode);
 
   showCurrentNumber(state.currentNumber);
   updateCurrentNumberStyle(state.currentNumber);

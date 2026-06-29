@@ -5,6 +5,7 @@ const adminCurrentNumber = document.getElementById("adminCurrentNumber");
 const calledCount = document.getElementById("calledCount");
 const callHistoryList = document.getElementById("callHistoryList");
 const patternSelect = document.getElementById("patternSelect");
+const displayModeSelect = document.getElementById("displayModeSelect");
 const undoButton = document.getElementById("undoButton");
 const bingoButton = document.getElementById("bingoButton");
 const resumeButton = document.getElementById("resumeButton");
@@ -108,6 +109,7 @@ function updateAdmin(state) {
   latestCalledNumbers = state.calledNumbers;
   adminCurrentNumber.textContent = state.currentNumber || "None";
   patternSelect.value = state.pattern || "Regular Bingo";
+  displayModeSelect.value = state.displayMode || "main";
   updateCallHistory(state.calledNumbers);
   updateNumberButtons(state.calledNumbers);
 
@@ -150,6 +152,10 @@ randomCallButton.addEventListener("click", () => {
 
 patternSelect.addEventListener("change", () => {
   socket.emit("game:set-pattern", patternSelect.value);
+});
+
+displayModeSelect.addEventListener("change", () => {
+  socket.emit("display:set-mode", displayModeSelect.value);
 });
 
 setDarkMode(localStorage.getItem(darkModeStorageKey) === "true");
