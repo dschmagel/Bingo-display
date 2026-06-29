@@ -10,9 +10,18 @@ const io = new Server(server);
 const PORT = process.env.PORT || 3000;
 const bingoPatterns = [
   "Regular Bingo",
+  "Hard Line No Space",
   "Double Bingo",
   "Corners",
+  "Four Corners or Inner Corners",
   "X",
+  "Checkbox",
+  "Postage Stamp",
+  "Two Postage Stamps",
+  "Floating Postage Stamp",
+  "Floating Two Postage Stamps",
+  "Picture Frame",
+  "Box",
   "Blackout"
 ];
 const displayModes = [

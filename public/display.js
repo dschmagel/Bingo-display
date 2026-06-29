@@ -19,32 +19,123 @@ let fireworksTimer = null;
 let currentPattern = "Regular Bingo";
 let patternCycleIndex = 0;
 
+function getRow(rowIndex) {
+  return Array.from({ length: 5 }, (unused, columnIndex) => rowIndex * 5 + columnIndex);
+}
+
+function getColumn(columnIndex) {
+  return Array.from({ length: 5 }, (unused, rowIndex) => rowIndex * 5 + columnIndex);
+}
+
+function getSquareCells(startRow, startColumn, size) {
+  const cells = [];
+
+  for (let rowIndex = startRow; rowIndex < startRow + size; rowIndex += 1) {
+    for (let columnIndex = startColumn; columnIndex < startColumn + size; columnIndex += 1) {
+      cells.push(rowIndex * 5 + columnIndex);
+    }
+  }
+
+  return cells;
+}
+
+function combineCells(...cellGroups) {
+  return [...new Set(cellGroups.flat())];
+}
+
+function getTwoShapeCycles(shapeCycles) {
+  const cycles = [];
+
+  for (let firstIndex = 0; firstIndex < shapeCycles.length; firstIndex += 1) {
+    for (let secondIndex = firstIndex + 1; secondIndex < shapeCycles.length; secondIndex += 1) {
+      const firstCells = new Set(shapeCycles[firstIndex]);
+      const shapesOverlap = shapeCycles[secondIndex].some((cell) => firstCells.has(cell));
+
+      if (shapesOverlap) {
+        continue;
+      }
+
+      cycles.push(combineCells(shapeCycles[firstIndex], shapeCycles[secondIndex]));
+    }
+  }
+
+  return cycles;
+}
+
 const regularPatternCycles = [
-  [0, 1, 2, 3, 4],
-  [5, 6, 7, 8, 9],
-  [10, 11, 12, 13, 14],
-  [15, 16, 17, 18, 19],
-  [20, 21, 22, 23, 24],
-  [0, 5, 10, 15, 20],
-  [1, 6, 11, 16, 21],
-  [2, 7, 12, 17, 22],
-  [3, 8, 13, 18, 23],
-  [4, 9, 14, 19, 24],
+  getRow(0),
+  getRow(1),
+  getRow(2),
+  getRow(3),
+  getRow(4),
+  getColumn(0),
+  getColumn(1),
+  getColumn(2),
+  getColumn(3),
+  getColumn(4),
   [0, 6, 12, 18, 24],
   [4, 8, 12, 16, 20]
 ];
 
+const hardLineNoSpaceCycles = regularPatternCycles.filter((cells) => {
+  return !cells.includes(12);
+});
+
 const doublePatternCycles = [
-  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-  [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
-  [0, 5, 10, 15, 20, 4, 9, 14, 19, 24],
-  [1, 6, 11, 16, 21, 3, 8, 13, 18, 23],
+  combineCells(getRow(0), getRow(1)),
+  combineCells(getRow(2), getRow(3)),
+  combineCells(getColumn(0), getColumn(4)),
+  combineCells(getColumn(1), getColumn(3)),
   [0, 6, 12, 18, 24, 4, 8, 12, 16, 20]
 ];
+
+const cornerPostageStampCycles = [
+  getSquareCells(0, 0, 2),
+  getSquareCells(0, 3, 2),
+  getSquareCells(3, 0, 2),
+  getSquareCells(3, 3, 2)
+];
+
+const floatingPostageStampCycles = [];
+const boxCycles = [];
+
+for (let rowIndex = 0; rowIndex <= 3; rowIndex += 1) {
+  for (let columnIndex = 0; columnIndex <= 3; columnIndex += 1) {
+    floatingPostageStampCycles.push(getSquareCells(rowIndex, columnIndex, 2));
+  }
+}
+
+for (let rowIndex = 0; rowIndex <= 2; rowIndex += 1) {
+  for (let columnIndex = 0; columnIndex <= 2; columnIndex += 1) {
+    boxCycles.push(getSquareCells(rowIndex, columnIndex, 3));
+  }
+}
+
+const patternCycles = {
+  "Regular Bingo": regularPatternCycles,
+  "Hard Line No Space": hardLineNoSpaceCycles,
+  "Double Bingo": doublePatternCycles,
+  "Four Corners or Inner Corners": [
+    [0, 4, 20, 24],
+    [6, 8, 16, 18]
+  ],
+  "Postage Stamp": cornerPostageStampCycles,
+  "Two Postage Stamps": getTwoShapeCycles(cornerPostageStampCycles),
+  "Floating Postage Stamp": floatingPostageStampCycles,
+  "Floating Two Postage Stamps": getTwoShapeCycles(floatingPostageStampCycles),
+  "Box": boxCycles
+};
 
 const patternCells = {
   "Corners": [0, 4, 20, 24],
   "X": [0, 4, 6, 8, 12, 16, 18, 20, 24],
+  "Checkbox": [5, 10, 16, 22, 18, 14, 9],
+  "Picture Frame": [
+    ...getRow(0),
+    ...getRow(4),
+    ...getColumn(0),
+    ...getColumn(4)
+  ],
   "Blackout": Array.from({ length: 25 }, (unused, index) => index)
 };
 
@@ -190,12 +281,9 @@ function showCurrentNumber(number) {
 }
 
 function getPatternCells(pattern) {
-  if (pattern === "Regular Bingo") {
-    return regularPatternCycles[patternCycleIndex % regularPatternCycles.length];
-  }
-
-  if (pattern === "Double Bingo") {
-    return doublePatternCycles[patternCycleIndex % doublePatternCycles.length];
+  if (patternCycles[pattern]) {
+    const cycles = patternCycles[pattern];
+    return cycles[patternCycleIndex % cycles.length];
   }
 
   return patternCells[pattern] || regularPatternCycles[0];
