@@ -395,16 +395,18 @@ button:disabled {
 }
 
 .display-mode-recent .recent-calls {
-  align-items: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: clamp(0.8rem, 2vw, 1.6rem);
   margin: 0;
+  width: min(100%, 72rem);
 }
 
 .display-mode-recent .recent-call,
 .display-mode-recent .recent-call-empty {
-  min-width: clamp(5.6rem, 12vw, 11rem);
-  min-height: clamp(5.6rem, 12vw, 11rem);
+  width: clamp(6rem, 12vw, 11rem);
+  min-height: clamp(6rem, 12vw, 11rem);
+  justify-self: center;
   border-width: clamp(0.18rem, 0.45vw, 0.4rem);
   font-size: clamp(1.7rem, 4vw, 3.8rem);
 }
