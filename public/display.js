@@ -9,6 +9,7 @@ const currentLetter = document.getElementById("currentLetter");
 const currentNumber = document.getElementById("currentNumber");
 const recentCalls = document.getElementById("recentCalls");
 const displayPattern = document.getElementById("displayPattern");
+const patternBoardTitle = document.getElementById("patternBoardTitle");
 const patternBoard = document.getElementById("patternBoard");
 
 const fireworkColors = ["#ffd84d", "#ff5d73", "#54d6ff", "#7ef0a8", "#c78cff"];
@@ -265,6 +266,7 @@ function updateDisplay(state) {
 
   currentPattern = nextPattern;
   displayPattern.textContent = currentPattern;
+  patternBoardTitle.textContent = `Pattern: ${currentPattern}`;
   updatePatternBoard(currentPattern);
   updateRecentCalls(state.calledNumbers);
 }

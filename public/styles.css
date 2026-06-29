@@ -200,6 +200,11 @@ button:disabled {
   color: #101820;
 }
 
+.letter-n .current-letter {
+  color: #1d2630;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
 .current-number {
   position: relative;
   z-index: 1;
