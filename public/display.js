@@ -129,7 +129,7 @@ const patternCycles = {
 const patternCells = {
   "Corners": [0, 4, 20, 24],
   "X": [0, 4, 6, 8, 12, 16, 18, 20, 24],
-  "Checkbox": [5, 10, 16, 22, 18, 14, 9],
+  "Checkbox": [4, 8, 10, 12, 15, 16, 20],
   "Picture Frame": [
     ...getRow(0),
     ...getRow(4),
