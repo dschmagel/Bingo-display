@@ -83,9 +83,9 @@ button:disabled {
 
 .display-content {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(15rem, 0.65fr);
+  grid-template-columns: minmax(0, 1.45fr) minmax(14rem, 0.55fr);
   align-items: start;
-  gap: clamp(2rem, 5vw, 5rem);
+  gap: clamp(1.5rem, 4vw, 4rem);
 }
 
 .number-column {
@@ -115,8 +115,8 @@ button:disabled {
 }
 
 .display-mode-number .current-number-badge {
-  width: min(70vw, 78vh, 56rem);
-  height: min(70vw, 78vh, 56rem);
+  width: min(74vw, 80vh, 60rem);
+  height: min(74vw, 80vh, 60rem);
 }
 
 .display-mode-number .current-number {
@@ -138,9 +138,9 @@ button:disabled {
   position: relative;
   display: inline-grid;
   place-items: center;
-  width: clamp(20rem, 40vw, 38rem);
-  height: clamp(20rem, 40vw, 38rem);
-  padding: clamp(2.4rem, 4vw, 4rem) clamp(1.25rem, 2.5vw, 2.4rem) clamp(1.6rem, 3vw, 3rem);
+  width: clamp(22rem, 44vw, 42rem);
+  height: clamp(22rem, 44vw, 42rem);
+  padding: clamp(2.4rem, 3.8vw, 4rem) clamp(1.2rem, 2.3vw, 2.4rem) clamp(1.6rem, 2.8vw, 3rem);
   border: clamp(0.35rem, 0.8vw, 0.75rem) solid rgba(var(--number-color), 0.82);
   border-radius: 999px;
   background:
