@@ -358,7 +358,7 @@ function updateDisplay(state) {
 
   currentPattern = nextPattern;
   displayPattern.textContent = currentPattern;
-  patternBoardTitle.textContent = `Pattern: ${currentPattern}`;
+  patternBoardTitle.textContent = state.displayMode === "pattern" ? `Pattern: ${currentPattern}` : "Winning Card";
   updatePatternBoard(currentPattern);
   updateRecentCalls(state.calledNumbers);
 }
