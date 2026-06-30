@@ -115,12 +115,12 @@ button:disabled {
 }
 
 .display-mode-number .current-number-badge {
-  min-width: min(64vw, 72vh, 52rem);
-  min-height: min(64vw, 72vh, 52rem);
+  width: min(64vw, 72vh, 52rem);
+  height: min(64vw, 72vh, 52rem);
 }
 
 .display-mode-number .current-number {
-  font-size: clamp(9rem, 31vw, 29rem);
+  font-size: clamp(8rem, 27vw, 25rem);
 }
 
 .display-mode-number .current-number.ready-number {
@@ -138,24 +138,24 @@ button:disabled {
   position: relative;
   display: inline-grid;
   place-items: center;
-  min-width: clamp(16rem, 35vw, 34rem);
-  min-height: clamp(15.5rem, 34vw, 32rem);
-  padding: clamp(3.8rem, 6vw, 6rem) clamp(2.4rem, 4.5vw, 4.6rem) clamp(2.4rem, 4.5vw, 4.6rem);
-  border: clamp(0.55rem, 1.2vw, 1.1rem) solid rgba(183, 197, 213, 0.72);
+  width: clamp(17rem, 34vw, 32rem);
+  height: clamp(17rem, 34vw, 32rem);
+  padding: clamp(2.6rem, 5vw, 4.8rem) clamp(1.4rem, 3vw, 3rem) clamp(1.8rem, 3.5vw, 3.6rem);
+  border: clamp(0.35rem, 0.8vw, 0.75rem) solid rgba(var(--number-color), 0.82);
   border-radius: 999px;
   background:
-    radial-gradient(circle, rgba(255, 255, 255, 0.13) 0 42%, transparent 43%),
-    radial-gradient(circle, rgba(var(--number-color), 0.34), transparent 68%);
+    radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.26), transparent 24%),
+    radial-gradient(circle, rgba(var(--number-color), 0.42), rgba(var(--number-color), 0.15) 58%, rgba(16, 24, 32, 0.86));
   box-shadow:
-    0 0 42px rgba(var(--number-color), 0.5),
-    inset 0 0 36px rgba(255, 255, 255, 0.08);
+    0 0 42px rgba(var(--number-color), 0.52),
+    inset 0 0 34px rgba(255, 255, 255, 0.1);
 }
 
 .current-number-badge::before {
   content: "";
   position: absolute;
-  inset: clamp(0.8rem, 1.6vw, 1.4rem);
-  border: 2px solid rgba(var(--number-color), 0.82);
+  inset: clamp(0.75rem, 1.45vw, 1.35rem);
+  border: 2px solid rgba(255, 255, 255, 0.16);
   border-radius: inherit;
   opacity: 0.9;
 }
@@ -214,7 +214,7 @@ button:disabled {
   justify-content: center;
   column-gap: clamp(0.05rem, 0.35vw, 0.35rem);
   margin: 0;
-  font-size: clamp(7rem, 20vw, 20rem);
+  font-size: clamp(6rem, 18vw, 17.5rem);
   line-height: 0.9;
   color: #f8fbff;
   text-shadow: 0 6px 28px rgba(0, 0, 0, 0.38);
