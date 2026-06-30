@@ -115,12 +115,12 @@ button:disabled {
 }
 
 .display-mode-number .current-number-badge {
-  width: min(64vw, 72vh, 52rem);
-  height: min(64vw, 72vh, 52rem);
+  width: min(70vw, 78vh, 56rem);
+  height: min(70vw, 78vh, 56rem);
 }
 
 .display-mode-number .current-number {
-  font-size: clamp(8rem, 27vw, 25rem);
+  font-size: clamp(8rem, 25vw, 24rem);
 }
 
 .display-mode-number .current-number.ready-number {
@@ -138,9 +138,9 @@ button:disabled {
   position: relative;
   display: inline-grid;
   place-items: center;
-  width: clamp(17rem, 34vw, 32rem);
-  height: clamp(17rem, 34vw, 32rem);
-  padding: clamp(2.6rem, 5vw, 4.8rem) clamp(1.4rem, 3vw, 3rem) clamp(1.8rem, 3.5vw, 3.6rem);
+  width: clamp(20rem, 40vw, 38rem);
+  height: clamp(20rem, 40vw, 38rem);
+  padding: clamp(2.4rem, 4vw, 4rem) clamp(1.25rem, 2.5vw, 2.4rem) clamp(1.6rem, 3vw, 3rem);
   border: clamp(0.35rem, 0.8vw, 0.75rem) solid rgba(var(--number-color), 0.82);
   border-radius: 999px;
   background:
@@ -214,7 +214,7 @@ button:disabled {
   justify-content: center;
   column-gap: clamp(0.05rem, 0.35vw, 0.35rem);
   margin: 0;
-  font-size: clamp(6rem, 18vw, 17.5rem);
+  font-size: clamp(6.5rem, 18vw, 17.5rem);
   line-height: 0.9;
   color: #f8fbff;
   text-shadow: 0 6px 28px rgba(0, 0, 0, 0.38);
