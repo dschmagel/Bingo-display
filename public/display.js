@@ -251,6 +251,7 @@ function formatDisplayNumber(number) {
 function showCurrentNumber(number) {
   currentNumber.innerHTML = "";
   currentNumber.classList.toggle("ready-number", !number);
+  currentNumber.classList.remove("single-digit-b-number");
 
   if (!number) {
     currentNumber.textContent = "Ready";
@@ -259,11 +260,14 @@ function showCurrentNumber(number) {
 
   const letter = number.charAt(0);
   const value = number.slice(1);
+  const isSingleDigitBNumber = letter === "B" && value.length === 1;
 
   if (!bingoLetters.includes(letter)) {
     currentNumber.textContent = number;
     return;
   }
+
+  currentNumber.classList.toggle("single-digit-b-number", isSingleDigitBNumber);
 
   const letterSpan = document.createElement("span");
   letterSpan.className = "display-number-letter";

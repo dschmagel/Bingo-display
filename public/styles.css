@@ -226,6 +226,11 @@ button:disabled {
   line-height: 1;
 }
 
+.current-number.single-digit-b-number {
+  grid-template-columns: 0.72em 0.66em;
+  column-gap: 0;
+}
+
 .display-number-letter {
   text-align: center;
 }
