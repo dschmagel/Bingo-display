@@ -172,7 +172,7 @@ for (const column of bingoColumns) {
     const ball = document.createElement("span");
     ball.className = `called-board-ball called-board-ball-${column.letter.toLowerCase()}`;
     ball.dataset.number = number;
-    ball.textContent = number;
+    ball.textContent = value;
     row.appendChild(ball);
   }
 
