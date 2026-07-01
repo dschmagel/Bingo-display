@@ -126,12 +126,6 @@ button:disabled {
   font-size: clamp(6rem, 17vw, 15rem);
 }
 
-.display-mode-number .current-letter {
-  min-width: clamp(4rem, 8vw, 7rem);
-  min-height: clamp(4rem, 8vw, 7rem);
-  font-size: clamp(2.3rem, 5vw, 4.6rem);
-}
-
 .current-number-badge {
   --number-color: 77, 111, 145;
   position: relative;
@@ -139,7 +133,7 @@ button:disabled {
   place-items: center;
   width: clamp(22rem, 44vw, 42rem);
   height: clamp(22rem, 44vw, 42rem);
-  padding: clamp(2.4rem, 3.8vw, 4rem) clamp(1.2rem, 2.3vw, 2.4rem) clamp(1.6rem, 2.8vw, 3rem);
+  padding: clamp(1.5rem, 3vw, 3rem);
   border: clamp(0.35rem, 0.8vw, 0.75rem) solid rgba(var(--number-color), 0.82);
   border-radius: 999px;
   background:
@@ -177,31 +171,6 @@ button:disabled {
 
 .current-number-badge.letter-o {
   --number-color: 255, 216, 77;
-}
-
-.current-letter {
-  position: absolute;
-  top: 0;
-  display: grid;
-  place-items: center;
-  min-width: clamp(3.2rem, 5.7vw, 5.2rem);
-  min-height: clamp(3.2rem, 5.7vw, 5.2rem);
-  border-radius: 999px;
-  background: rgb(var(--number-color));
-  color: white;
-  font-size: clamp(1.8rem, 3.8vw, 3.4rem);
-  font-weight: 900;
-  box-shadow: 0 0 28px rgba(var(--number-color), 0.7);
-  transform: translateY(-35%);
-}
-
-.letter-o .current-letter {
-  color: #101820;
-}
-
-.letter-n .current-letter {
-  color: #1d2630;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65);
 }
 
 .current-number {

@@ -5,7 +5,6 @@ const numberView = document.getElementById("numberView");
 const bingoView = document.getElementById("bingoView");
 const fireworks = document.getElementById("fireworks");
 const currentNumberBadge = document.getElementById("currentNumberBadge");
-const currentLetter = document.getElementById("currentLetter");
 const currentNumber = document.getElementById("currentNumber");
 const recentCalls = document.getElementById("recentCalls");
 const displayPattern = document.getElementById("displayPattern");
@@ -223,13 +222,9 @@ function updateCurrentNumberStyle(number) {
   );
 
   if (!bingoLetters.includes(letter)) {
-    currentLetter.classList.add("hidden");
-    currentLetter.textContent = "";
     return;
   }
 
-  currentLetter.classList.remove("hidden");
-  currentLetter.textContent = letter;
   currentNumberBadge.classList.add(`letter-${letter.toLowerCase()}`);
 }
 
