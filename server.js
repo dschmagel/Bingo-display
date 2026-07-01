@@ -28,7 +28,8 @@ const displayModes = [
   "main",
   "number",
   "pattern",
-  "recent"
+  "recent",
+  "board"
 ];
 const bingoColumns = [
   { letter: "B", start: 1, end: 15 },

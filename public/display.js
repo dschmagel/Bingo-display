@@ -7,12 +7,20 @@ const fireworks = document.getElementById("fireworks");
 const currentNumberBadge = document.getElementById("currentNumberBadge");
 const currentNumber = document.getElementById("currentNumber");
 const recentCalls = document.getElementById("recentCalls");
+const calledBoard = document.getElementById("calledBoard");
 const displayPattern = document.getElementById("displayPattern");
 const patternBoardTitle = document.getElementById("patternBoardTitle");
 const patternBoard = document.getElementById("patternBoard");
 
 const fireworkColors = ["#ffd84d", "#ff5d73", "#54d6ff", "#7ef0a8", "#c78cff"];
-const bingoLetters = ["B", "I", "N", "G", "O"];
+const bingoColumns = [
+  { letter: "B", start: 1, end: 15 },
+  { letter: "I", start: 16, end: 30 },
+  { letter: "N", start: 31, end: 45 },
+  { letter: "G", start: 46, end: 60 },
+  { letter: "O", start: 61, end: 75 }
+];
+const bingoLetters = bingoColumns.map((column) => column.letter);
 let fireworksStarted = false;
 let fireworksTimer = null;
 let currentPattern = "Regular Bingo";
@@ -148,6 +156,27 @@ for (let index = 0; index < 25; index += 1) {
   }
 
   patternBoard.appendChild(cell);
+}
+
+for (const column of bingoColumns) {
+  const row = document.createElement("div");
+  row.className = "called-board-row";
+
+  const rowLabel = document.createElement("div");
+  rowLabel.className = `called-board-letter called-board-letter-${column.letter.toLowerCase()}`;
+  rowLabel.textContent = column.letter;
+  row.appendChild(rowLabel);
+
+  for (let value = column.start; value <= column.end; value += 1) {
+    const number = `${column.letter}${value}`;
+    const ball = document.createElement("span");
+    ball.className = `called-board-ball called-board-ball-${column.letter.toLowerCase()}`;
+    ball.dataset.number = number;
+    ball.textContent = number;
+    row.appendChild(ball);
+  }
+
+  calledBoard.appendChild(row);
 }
 
 function createFirework(x, y, color) {
@@ -318,6 +347,14 @@ function updateRecentCalls(calledNumbers) {
   }
 }
 
+function updateCalledBoard(calledNumbers) {
+  const calledNumberSet = new Set(calledNumbers);
+
+  document.querySelectorAll(".called-board-ball").forEach((ball) => {
+    ball.classList.toggle("called", calledNumberSet.has(ball.dataset.number));
+  });
+}
+
 function updateDisplayMode(displayMode) {
   const mode = displayMode || "main";
 
@@ -325,7 +362,8 @@ function updateDisplayMode(displayMode) {
     "display-mode-main",
     "display-mode-number",
     "display-mode-pattern",
-    "display-mode-recent"
+    "display-mode-recent",
+    "display-mode-board"
   );
   displayScreen.classList.add(`display-mode-${mode}`);
 }
@@ -356,6 +394,7 @@ function updateDisplay(state) {
   patternBoardTitle.textContent = state.displayMode === "pattern" ? currentPattern : "Winning Card";
   updatePatternBoard(currentPattern);
   updateRecentCalls(state.calledNumbers);
+  updateCalledBoard(state.calledNumbers);
 }
 
 socket.on("state:update", updateDisplay);
